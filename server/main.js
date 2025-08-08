@@ -27,7 +27,7 @@ Meteor.startup(async () => {
   }
 
 
-  if (await TasksCollection.find().countAsync() === 0) {
+  if (await TasksCollection.find().countAsync() === 0 && user) {
     [
       'First Task',
       'Second Task',

@@ -5,6 +5,7 @@ import { ReactiveDict } from 'meteor/reactive-dict';
 import './App.html';
 import './Task.js';
 import './Login.js';
+import './Form.js'
 
 const HIDE_COMPLETED_STRING = 'hideCompleted';
 const IS_LOADING_STRING = "isLoading";
@@ -15,13 +16,9 @@ const isUserLogged = () => !!getUser();
 
 const getTasksFilter = () => {
   const user = getUser();
-
   const hideCompletedFilter = { isChecked: { $ne: true } };
-
   const userFilter = user ? { userId: user._id } : {};
-
   const pendingOnlyFilter = { ...hideCompletedFilter, ...userFilter };
-
   return { userFilter, pendingOnlyFilter };
 };
 
@@ -86,22 +83,4 @@ Template.mainContainer.helpers({
   getUser() {
     return getUser();
   },
-});
-
-Template.form.events({
-  async "submit .task-form"(event) {
-    // Prevent default browser form submit
-    event.preventDefault();
-
-    // Get value from form element
-    const target = event.target;
-    const text = target.text.value;
-    const category = target.category.value;
-
-    // Insert a task into the collection
-    Meteor.call('tasks.insert', text, category);
-
-    // Clear form
-    target.text.value = '';
-  }
 });
