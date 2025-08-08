@@ -1,5 +1,5 @@
 <template name="task">
-    <li>
+    <li draggable="true" class="draggable-task" data-id="{{_id}}" data-category="{{category}}">
         <div class="taskContainer">
             <input type="checkbox" checked="{{isChecked}}" class="toggle-checked" />
             <span>{{text}}</span>
@@ -8,12 +8,13 @@
     </li>
 </template>
 
+
 <template name="taskColumns">
     <div class="category-row">
         {{#each categories}}
-        <div class="category-column">
+        <div class="category-column" data-category="{{this}}">
             <div class="category-title">{{this}}</div>
-            <ul class="tasks">
+            <ul class="tasks droppable" data-category="{{this}}">
                 {{#each tasksInCategory this}}
                 {{> task}}
                 {{/each}}

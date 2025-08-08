@@ -18,16 +18,7 @@
                 {{getUser.username}} 🚪
             </div>
             {{> form }}
-
-            <div class="filter">
-                <button id="hide-completed-button">
-                    {{#if hideCompleted}}
-                    Show All
-                    {{else}}
-                    Hide Completed
-                    {{/if}}
-                </button>
-            </div>
+            
             {{#if isLoading}}
             <div class="loading">loading...</div>
             {{/if}}

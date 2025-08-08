@@ -49,5 +49,20 @@ Meteor.methods({
                 isChecked
             }
         });
-    }
+    },
+
+    async 'tasks.updateCategory'(taskId, newCategory) {        check(taskId, String);
+        check(newCategory, String);
+        if (!this.userId) {
+            throw new Meteor.Error('Not authorized.');
+        }
+        const task = await TasksCollection.findOneAsync({ _id: taskId });
+        if (!task || task.userId !== Meteor.userId()) {
+            throw new Meteor.Error('Not authorized to move this task');
+        }
+
+        await TasksCollection.updateAsync(taskId, {
+            $set: { category: newCategory },
+        });
+    },
 });

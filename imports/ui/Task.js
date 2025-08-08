@@ -16,7 +16,7 @@ Template.task.events({
 
 Template.taskColumns.helpers({
     async categories() {
-        let categorySet = new Set(['Work', 'Personal', 'Urgent','General']);
+        let categorySet = new Set(['Work', 'Personal', 'Urgent', 'General']);
         return Array.from(categorySet);
     },
     async tasksInCategory(category) {
@@ -29,3 +29,35 @@ Template.taskColumns.helpers({
         });
     },
 })
+
+Template.taskColumns.onRendered(function () {
+    const container = this.find('.category-row');
+
+    container.addEventListener('dragstart', (e) => {
+        const li = e.target.closest('.draggable-task');
+        if (li) {
+            e.dataTransfer.setData('text/plain', li.dataset.id);
+        }
+    });
+
+    container.addEventListener('dragover', (e) => {
+        e.preventDefault();
+    });
+
+    container.addEventListener('drop', (e) => {
+        e.preventDefault();
+
+        const taskId = e.dataTransfer.getData('text/plain');
+        const dropTarget = e.target.closest('[data-category]');
+        const newCategory = dropTarget?.dataset?.category;
+
+        if (taskId && newCategory) {
+            Meteor.call('tasks.updateCategory', taskId, newCategory, (err) => {
+                if (err) {
+                    console.error('Error updating category:', err);
+                }
+            });
+        }
+    });
+
+});
