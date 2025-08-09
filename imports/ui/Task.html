@@ -1,24 +1,33 @@
 <template name="task">
-    <li draggable="true" class="draggable-task" data-id="{{_id}}" data-category="{{category}}">
-        <div class="taskContainer">
-            <input type="checkbox" checked="{{isChecked}}" class="toggle-checked" />
-            <span>{{text}}</span>
-            <button class="delete">&times;</button>
+    <li draggable="true" class="draggable-task list-group-item d-flex justify-content-between align-items-center"
+        data-id="{{_id}}" data-category="{{category}}">
+
+        <div class="form-check">
+            <input type="checkbox" checked="{{isChecked}}" class="form-check-input me-2 toggle-checked" />
+            <label class="form-check-label">{{text}}</label>
         </div>
+
+        <button class="btn btn-sm btn-outline-danger delete" title="Delete">
+            <i class="fas fa-times"></i>
+        </button>
     </li>
 </template>
 
 
 <template name="taskColumns">
-    <div class="category-row">
+    <div class="row g-3 category-row mt-3" id="category-row">
         {{#each categories}}
-        <div class="category-column" data-category="{{this}}">
-            <div class="category-title">{{this}}</div>
-            <ul class="tasks droppable" data-category="{{this}}">
-                {{#each tasksInCategory this}}
-                {{> task}}
-                {{/each}}
-            </ul>
+        <div class="col-md-6 col-lg-3">
+            <div class="card shadow-sm h-100 min-vh-100" data-category="{{this}}">
+                <div class="card-header bg-primary text-white text-center">
+                    {{this}}
+                </div>
+                <ul class="list-group list-group-flush tasks droppable" data-category="{{this}}">
+                    {{#each tasksInCategory this}}
+                    {{> task}}
+                    {{/each}}
+                </ul>
+            </div>
         </div>
         {{/each}}
     </div>

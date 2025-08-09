@@ -1,18 +1,42 @@
 <template name="login">
-    <form class="login-form">
-        <div>
-            <label htmlFor="username">Username</label>
-
-            <input type="text" placeholder="Username" name="username" required />
+  <div class="d-flex justify-content-center align-items-center min-vh-100">
+    <div class="card p-4 shadow-sm" style="min-width: 300px; max-width: 400px; width: 100%;">
+      <h5 class="card-title text-center mb-3">Login</h5>
+      
+      <form class="login-form needs-validation" novalidate>
+        
+        <!-- Username -->
+        <div class="mb-3">
+          <label for="username" class="form-label">Username</label>
+          <input 
+            type="text" 
+            class="form-control" 
+            id="username" 
+            name="username" 
+            placeholder="Enter your username" 
+            required />
         </div>
 
-        <div>
-            <label htmlFor="password">Password</label>
+        <!-- Password -->
+        <div class="mb-3">
+          <label for="password" class="form-label">Password</label>
+          <input 
+            type="password" 
+            class="form-control" 
+            id="password" 
+            name="password" 
+            placeholder="Enter your password" 
+            required />
+        </div>
 
-            <input type="password" placeholder="Password" name="password" required />
+        <!-- Submit Button -->
+        <div class="d-grid">
+          <button type="submit" class="btn btn-primary">
+            <i class="fas fa-sign-in-alt me-1"></i> Log In
+          </button>
         </div>
-        <div>
-            <button type="submit">Log In</button>
-        </div>
-    </form>
+
+      </form>
+    </div>
+  </div>
 </template>

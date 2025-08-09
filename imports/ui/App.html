@@ -1,32 +1,82 @@
 <body>
-    {{> mainContainer }}
+  {{> mainContainer }}
 </body>
 
 <template name="mainContainer">
-    <div class="app">
-        <header>
-            <div class="app-bar">
-                <div class="app-header">
-                    <h1>📝️ To Do List {{incompleteCount}}</h1>
-                </div>
-            </div>
-        </header>
+  <div class="app">
 
-        <div class="main">
-            {{#if isUserLogged}}
-            <div class="user">
-                {{getUser.username}} 🚪
-            </div>
-            {{> form }}
-            
-            {{#if isLoading}}
-            <div class="loading">loading...</div>
-            {{/if}}
-            {{> taskColumns}}
+    <nav class="navbar navbar-expand-lg navbar-dark bg-primary mb-4 shadow-sm">
+      <div class="container-fluid">
+        <!-- App Name -->
+        <span class="navbar-brand h4 mb-0">
+          To Do List
+        </span>
 
-            {{else}}
-            {{> login }}
-            {{/if}}
+        <!-- Right Side (User + Logout) -->
+        {{#if isUserLogged}}
+        <div class="d-flex align-items-center">
+          <!-- <span class="text-white me-3 fw-semibold">
+            {{getUser.username}}
+          </span>
+          <button class="btn btn-outline-light btn-sm user" title="Logout">
+            <i class="fas fa-sign-out-alt me-1"></i> Logout
+          </button> -->
+          <button class="btn btn-outline-light btn-sm" data-bs-toggle="modal" data-bs-target="#userModal"
+            title="Account">
+            <i class="fas fa-user"></i>
+          </button>
         </div>
+        {{/if}}
+      </div>
+    </nav>
+
+    <!-- 🔽 Main App Content -->
+    <div class="main container p-5">
+
+      {{#if isUserLogged}}
+
+      {{> form }}
+
+      {{#if isLoading}}
+      <div class="alert alert-info my-3 text-center">
+        <span class="spinner-border spinner-border-sm me-2" role="status" aria-hidden="true"></span>
+        Loading tasks...
+      </div>
+      {{/if}}
+
+      {{> taskColumns}}
+
+      {{else}}
+
+      {{> login }}
+
+      {{/if}}
+
+      <!-- User Modal -->
+      <div class="modal fade" id="userModal" tabindex="-1" aria-labelledby="userModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+          <div class="modal-content">
+
+            <div class="modal-header">
+              <h5 class="modal-title" id="userModalLabel">Account</h5>
+              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+
+            <div class="modal-body text-center">
+              <p class="mb-3">
+                <i class="fas fa-user-circle fa-3x text-secondary mb-2"></i><br />
+                <strong>{{getUser.username}}</strong>
+              </p>
+              <button class="btn btn-outline-danger user" data-bs-dismiss="modal">
+                <i class="fas fa-sign-out-alt me-1"></i> Logout
+              </button>
+            </div>
+
+          </div>
+        </div>
+      </div>
+
+
     </div>
+  </div>
 </template>

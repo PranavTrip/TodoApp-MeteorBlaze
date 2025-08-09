@@ -1,11 +1,28 @@
 <template name="form">
-    <form class="task-form">
-        <input type="text" name="text" placeholder="Type to add new tasks" />
-        <select name="category">
-            <option value="Work">Work</option>
-            <option value="Personal">Personal</option>
-            <option value="Urgent">Urgent</option>
-        </select>
-        <button type="submit">Add Task</button>
+    <form class="task-form row g-2 align-items-end">
+
+        <!-- Task Text Input -->
+        <div class="col-md-6">
+            <label for="text" class="form-label visually-hidden">Task Name</label>
+            <input type="text" name="text" id="text" class="form-control" placeholder="Enter task name"
+                required />
+        </div>
+        <!-- Category Dropdown -->
+        <div class="col-md-4">
+            <label for="categorySelect" class="form-label visually-hidden">Category</label>
+            <select name="category" id="categorySelect" class="form-select" required>
+                <option value="Work">Work</option>
+                <option value="Personal">Personal</option>
+                <option value="Urgent">Urgent</option>
+            </select>
+        </div>
+
+        <!-- Submit Button -->
+        <div class="col-md-2">
+            <button type="submit" class="btn btn-primary w-100">
+                <i class="fas fa-plus me-1"></i> Add
+            </button>
+        </div>
+
     </form>
 </template>

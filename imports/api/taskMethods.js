@@ -51,7 +51,8 @@ Meteor.methods({
         });
     },
 
-    async 'tasks.updateCategory'(taskId, newCategory) {        check(taskId, String);
+    async 'tasks.updateCategory'(taskId, newCategory) {
+        check(taskId, String);
         check(newCategory, String);
         if (!this.userId) {
             throw new Meteor.Error('Not authorized.');
