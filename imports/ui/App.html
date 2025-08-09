@@ -4,7 +4,6 @@
 
 <template name="mainContainer">
   <div class="app">
-
     <nav class="navbar navbar-expand-lg navbar-dark bg-primary mb-4 shadow-sm">
       <div class="container-fluid">
         <!-- App Name -->
@@ -15,12 +14,6 @@
         <!-- Right Side (User + Logout) -->
         {{#if isUserLogged}}
         <div class="d-flex align-items-center">
-          <!-- <span class="text-white me-3 fw-semibold">
-            {{getUser.username}}
-          </span>
-          <button class="btn btn-outline-light btn-sm user" title="Logout">
-            <i class="fas fa-sign-out-alt me-1"></i> Logout
-          </button> -->
           <button class="btn btn-outline-light btn-sm" data-bs-toggle="modal" data-bs-target="#userModal"
             title="Account">
             <i class="fas fa-user"></i>
@@ -30,7 +23,6 @@
       </div>
     </nav>
 
-    <!-- 🔽 Main App Content -->
     <div class="main container p-5">
 
       {{#if isUserLogged}}
@@ -48,7 +40,11 @@
 
       {{else}}
 
+      {{#if showSignup}}
+      {{> signup }}
+      {{else}}
       {{> login }}
+      {{/if}}
 
       {{/if}}
 

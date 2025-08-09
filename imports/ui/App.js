@@ -5,6 +5,7 @@ import './App.html';
 import './Task.js';
 import './Login.js';
 import './Form.js'
+import './Signup.js';
 
 const HIDE_COMPLETED_STRING = 'hideCompleted';
 const IS_LOADING_STRING = "isLoading";
@@ -19,6 +20,7 @@ Template.mainContainer.onCreated(function mainContainerOnCreated() {
   Tracker.autorun(() => {
     this.state.set(IS_LOADING_STRING, !handler.ready());
   });
+  Session.setDefault('showSignup', false);
 });
 
 Template.mainContainer.events({
@@ -43,7 +45,10 @@ Template.mainContainer.helpers({
   isUserLogged() {
     return isUserLogged();
   },
-  getUser() {
-    return getUser();
+  showSignup() {
+    return Session.get('showSignup');
   },
+  getUser() {
+    return Meteor.user();
+  }
 });

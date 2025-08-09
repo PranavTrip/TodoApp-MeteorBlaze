@@ -12,5 +12,9 @@ Template.login.events({
         const password = target.password.value;
 
         Meteor.loginWithPassword(username, password);
+    },
+    'click #go-to-signup'(event) {
+        event.preventDefault();
+        Session.set('showSignup', true);
     }
 });
