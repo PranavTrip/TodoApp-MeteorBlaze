@@ -13,5 +13,7 @@ Template.form.events({
     Meteor.call('tasks.insert', text, category);
 
     target.text.value = '';
+    target.category.value = 'Work';
+    target.text.focus();
   }
 });

@@ -11,6 +11,7 @@ const insertTask = async (taskText, user) =>
     text: taskText,
     userId: user._id,
     createdAt: new Date(),
+    category: 'General',
   });
 
 const SEED_USERNAME = 'meteorite';
