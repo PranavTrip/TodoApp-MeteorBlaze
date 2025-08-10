@@ -3,12 +3,24 @@
 
         <!-- Task Text Input -->
         <div class="col-md-6">
-            <label for="text" class="form-label visually-hidden">Task Name</label>
-            <input type="text" name="text" id="text" class="form-control" placeholder="Enter task name"
+            <label for="taskName" class="form-label visually-hidden">Task Name</label>
+            <input type="text" name="taskName" id="taskName" class="form-control" placeholder="Enter task name"
                 required />
         </div>
+        <div class="col-md-6">
+            <label for="taskDescription" class="form-label visually-hidden">Task Description</label>
+            <input type="text" name="taskDescription" id="taskDescription" class="form-control"
+                placeholder="Enter task description" required />
+        </div>
+
+        <!-- Task Date Input -->
+        <div class="col-md-6">
+            <label for="taskDueDate" class="form-label visually-hidden">Task Due Date</label>
+            <input type="date" name="taskDueDate" id="taskDueDate" class="form-control"
+                placeholder="Enter task due date" required />
+        </div>
         <!-- Category Dropdown -->
-        <div class="col-md-4">
+        <div class="col-md-6">
             <label for="categorySelect" class="form-label visually-hidden">Category</label>
             <select name="category" id="categorySelect" class="form-select" required>
                 <option value="Work">Work</option>
@@ -18,7 +30,7 @@
         </div>
 
         <!-- Submit Button -->
-        <div class="col-md-2">
+        <div class="col-md-12">
             <button type="submit" class="btn login-btn y w-100">
                 <i class="fas fa-plus me-1"></i> Add
             </button>

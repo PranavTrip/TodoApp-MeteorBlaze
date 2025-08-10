@@ -14,7 +14,7 @@ body {
 .glass-panel {
   background: rgba(255, 255, 255, 0.08);
   border-radius: 12px;
-  box-shadow: 0 4px 8px rgba(0,0,0,0.25);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.25);
   backdrop-filter: blur(12px);
   -webkit-backdrop-filter: blur(12px);
   border: 1px solid rgba(255, 255, 255, 0.15);
@@ -177,4 +177,69 @@ body {
     opacity: 1;
     transform: translateY(0);
   }
+}
+
+
+
+/* Task Card */
+.draggable-task {
+  cursor: grab;
+  transition: transform 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+  border-left: 4px solid var(--bs-primary);
+  background-color: #fff;
+}
+
+.draggable-task:active {
+  cursor: grabbing;
+  transform: scale(0.98);
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+}
+
+/* Task Content */
+.task-content {
+  max-width: 85%;
+}
+
+.task-content h5 {
+  font-size: 1.05rem;
+  font-weight: 600;
+  color: #333;
+}
+
+.task-content p {
+  font-size: 0.9rem;
+  color: #6c757d;
+}
+
+
+.due-date-badge {
+  display: inline-block;
+  background-color: #f8d7da;
+  color: #842029;
+  font-size: 0.8rem;
+  padding: 3px 8px;
+  border-radius: 8px;
+  margin-top: 4px;
+  font-weight: 500;
+}
+
+.taskCardContainer {
+  overflow-y: auto;
+  max-height: calc(100vh - 250px);
+  height: 100%;
+}
+
+.taskCardContainer::-webkit-scrollbar {
+  width: 0px;
+  display: none;
+}
+
+.mainComponent {
+  height: calc(100vh - 200px);
+  overflow-y: auto;
+}
+
+.mainComponent::-webkit-scrollbar {
+  width: 0px;
+  display: none;
 }

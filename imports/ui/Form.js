@@ -7,13 +7,17 @@ Template.form.events({
     event.preventDefault();
 
     const target = event.target;
-    const text = target.text.value;
+    const taskName = target.taskName.value;
+    const taskDescription = target.taskDescription.value;
+    const taskDueDate = target.taskDueDate.value;
     const category = target.category.value;
 
-    Meteor.call('tasks.insert', text, category);
+    Meteor.call('tasks.insert', taskName, taskDescription, taskDueDate, category);
 
-    target.text.value = '';
+    target.taskName.value = '';
+    target.taskDescription.value = '';
+    target.taskDueDate.value = '';
     target.category.value = 'Work';
-    target.text.focus();
+    target.taskName.focus();
   }
 });

@@ -37,6 +37,12 @@ Template.userModal.events({
   },
 });
 
+Template.userModal.helpers({
+  getUser() {
+    return Meteor.user();
+  }
+});
+
 Template.mainContainer.helpers({
 
   hideCompleted() {
