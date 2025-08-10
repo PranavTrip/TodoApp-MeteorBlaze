@@ -1,20 +1,14 @@
 <body>
   {{> mainContainer }}
 </body>
-
 <template name="mainContainer">
   <div class="app">
     {{#if isUserLogged}}
-    <nav class="navbar navbar-expand-lg navbar-dark bg-primary mb-4 shadow-sm">
+    <nav class="navbar navbar-expand-lg navbar-dark custom-navbar mb-3 shadow-sm">
       <div class="container-fluid">
-        <!-- App Name -->
-        <span class="navbar-brand h4 mb-0">
-          To Do List
-        </span>
-
-        <!-- Right Side (User + Logout) -->
+        <span class="navbar-brand h4 mb-0">To Do List</span>
         <div class="d-flex align-items-center">
-          <button class="btn btn-outline-light btn-sm" data-bs-toggle="modal" data-bs-target="#userModal"
+          <button class="btn btn-outline-secondary btn-dark btn-sm" data-bs-toggle="modal" data-bs-target="#userModal"
             title="Account">
             <i class="fas fa-user"></i>
           </button>
@@ -25,9 +19,8 @@
 
 
     <div>
-
       {{#if isUserLogged}}
-      <div class="main container p-5">
+      <div class="main container p-5 glass-panel">
         {{> form }}
 
         {{#if isLoading}}
@@ -37,25 +30,25 @@
         </div>
         {{/if}}
 
-        {{> taskColumns}}
-        <!-- User Modal -->
-        <div class="modal fade" id="userModal" tabindex="-1" aria-labelledby="userModalLabel" aria-hidden="true">
-          <div class="modal-dialog modal-dialog-centered">
-            <div class="modal-content">
+          {{> taskColumns}}
+      <!-- User Modal -->
+      <div class="modal fade" id="userModal" tabindex="-1" aria-labelledby="userModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+          <div class="modal-content">
 
-              <div class="modal-header">
-                <h5 class="modal-title" id="userModalLabel">Account</h5>
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-              </div>
+            <div class="modal-header">
+              <h5 class="modal-title" id="userModalLabel">Account</h5>
+              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
 
-              <div class="modal-body text-center">
-                <p class="mb-3">
-                  <i class="fas fa-user-circle fa-3x text-secondary mb-2"></i><br />
-                  <strong>{{getUser.username}}</strong>
-                </p>
-                <button class="btn btn-outline-danger user" data-bs-dismiss="modal">
-                  <i class="fas fa-sign-out-alt me-1"></i> Logout
-                </button>
+            <div class="modal-body text-center">
+              <p class="mb-3">
+                <i class="fas fa-user-circle fa-3x text-secondary mb-2"></i><br />
+                <strong>{{getUser.username}}</strong>
+              </p>
+              <button class="btn btn-outline-danger user" data-bs-dismiss="modal">
+                <i class="fas fa-sign-out-alt me-1"></i> Logout
+              </button>
               </div>
 
             </div>
@@ -64,11 +57,11 @@
       </div>
       {{else}}
 
-      {{#if showSignup}}
-      {{> signup }}
-      {{else}}
-      {{> login }}
-      {{/if}}
+          {{#if showSignup}}
+          {{> signup }}
+          {{else}}
+          {{> login }}
+          {{/if}}
 
       {{/if}}
     </div>

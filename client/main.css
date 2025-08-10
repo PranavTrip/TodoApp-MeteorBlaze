@@ -3,8 +3,23 @@ body {
   padding: 0;
   box-sizing: border-box;
   font-family: 'Poppins', sans-serif;
-  background: linear-gradient(135deg, #293949, #ffffff);
+  background: linear-gradient(225deg, #1d2b64, #f8cdda);
+  background-attachment: fixed;
+  background-size: cover;
+  background-position: center;
+  min-height: 100vh;
+  color: #ecf0f1;
   overflow-y: hidden;
+}
+.glass-panel {
+  background: rgba(255, 255, 255, 0.08);
+  border-radius: 12px;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.25);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  padding: 1.5rem 2rem;
+  color: #ecf0f1;
 }
 
 
@@ -86,7 +101,7 @@ body {
 }
 
 .auth-input {
-   background-color: #ffffff;
+  background-color: #ffffff;
   color: #1d2b64;
   border: 1px solid #ccc;
   border-radius: 6px;
@@ -109,4 +124,57 @@ body {
   color: #333;
   font-weight: 500;
   margin-bottom: 6px;
+}
+
+
+/* Navbar stles */
+.custom-navbar {
+  background: linear-gradient(135deg, #1d2b64, #f8cdda);
+  backdrop-filter: blur(6px);
+  /* optional glass effect */
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+  transition: background 0.3s ease;
+}
+
+/* Navbar brand title */
+.custom-navbar .navbar-brand {
+  font-weight: 700;
+  font-size: 1.5rem;
+  color: #ffffff;
+  text-shadow: 0 1px 4px rgba(0, 0, 0, 0.3);
+}
+
+/* Account button */
+.custom-navbar .btn-outline-light {
+  border-color: rgba(255, 255, 255, 0.5);
+  color: #ffffff;
+  transition: 0.3s;
+}
+
+.custom-navbar .btn-outline-light:hover {
+  background-color: rgba(255, 255, 255, 0.2);
+  border-color: #ffffff;
+  color: #ffffff;
+}
+
+/* Optional: icon sizing */
+.custom-navbar i.fas {
+  font-size: 1rem;
+}
+
+.custom-navbar {
+  animation: fadeInNav 0.6s ease-in;
+}
+
+@keyframes fadeInNav {
+  from {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
