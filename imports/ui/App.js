@@ -28,6 +28,10 @@ Template.mainContainer.events({
     const currentHideCompleted = instance.state.get(HIDE_COMPLETED_STRING);
     instance.state.set(HIDE_COMPLETED_STRING, !currentHideCompleted);
   },
+
+});
+
+Template.userModal.events({
   'click .user'() {
     Meteor.logout();
   },
