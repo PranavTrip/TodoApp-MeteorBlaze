@@ -11,7 +11,11 @@ Template.login.events({
         const username = target.username.value;
         const password = target.password.value;
 
-        Meteor.loginWithPassword(username, password);
+        Meteor.loginWithPassword(username, password, (err) => {
+            if (err) {
+                alert(err.reason || 'Login failed');
+            }
+        });
     },
     'click #go-to-signup'(event) {
         event.preventDefault();
