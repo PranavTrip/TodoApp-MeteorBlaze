@@ -21,8 +21,6 @@
     <div>
       {{#if isUserLogged}}
       <div class="main container p-5 glass-panel">
-        {{> form }}
-
         {{#if isLoading}}
         <div class="alert alert-info my-3 text-center">
           <span class="spinner-border spinner-border-sm me-2" role="status" aria-hidden="true"></span>
@@ -30,38 +28,40 @@
         </div>
         {{/if}}
 
-          {{> taskColumns}}
-      <!-- User Modal -->
-      <div class="modal fade" id="userModal" tabindex="-1" aria-labelledby="userModalLabel" aria-hidden="true">
-        <div class="modal-dialog modal-dialog-centered">
-          <div class="modal-content">
+        {{> taskColumns}}
+        <!-- User Modal -->
+        <div class="modal fade" id="userModal" tabindex="-1" aria-labelledby="userModalLabel" aria-hidden="true">
+          <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
 
-            <div class="modal-header">
-              <h5 class="modal-title" id="userModalLabel">Account</h5>
-              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-            </div>
+              <div class="modal-header">
+                <h5 class="modal-title" id="userModalLabel">Account</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+              </div>
 
-            <div class="modal-body text-center">
-              <p class="mb-3">
-                <i class="fas fa-user-circle fa-3x text-secondary mb-2"></i><br />
-                <strong>{{getUser.username}}</strong>
-              </p>
-              <button class="btn btn-outline-danger user" data-bs-dismiss="modal">
-                <i class="fas fa-sign-out-alt me-1"></i> Logout
-              </button>
+              <div class="modal-body text-center">
+                <p class="mb-3">
+                  <i class="fas fa-user-circle fa-3x text-secondary mb-2"></i><br />
+                  <strong>{{getUser.username}}</strong>
+                </p>
+                <button class="btn btn-outline-danger user" data-bs-dismiss="modal">
+                  <i class="fas fa-sign-out-alt me-1"></i> Logout
+                </button>
               </div>
 
             </div>
           </div>
         </div>
       </div>
+      {{> taskModal}}
+
       {{else}}
 
-          {{#if showSignup}}
-          {{> signup }}
-          {{else}}
-          {{> login }}
-          {{/if}}
+      {{#if showSignup}}
+      {{> signup }}
+      {{else}}
+      {{> login }}
+      {{/if}}
 
       {{/if}}
     </div>

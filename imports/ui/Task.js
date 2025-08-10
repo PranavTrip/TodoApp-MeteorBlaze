@@ -12,6 +12,10 @@ Template.task.events({
     'click .delete'() {
         Meteor.call('tasks.remove', this._id);
     },
+    'click .add-task-btn'(event) {
+        const category = event.currentTarget.getAttribute('data-category');
+        Session.set('selectedCategory', category);
+    }
 });
 
 Template.taskColumns.helpers({

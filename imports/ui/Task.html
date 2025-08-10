@@ -1,32 +1,52 @@
 <template name="task">
-    <li draggable="true" class="draggable-task list-group-item d-flex justify-content-between align-items-center"
-        data-id="{{_id}}" data-category="{{category}}">
-        <div class="form-check">
-            <input type="checkbox" checked="{{isChecked}}" class="form-check-input me-2 toggle-checked" />
-            <label class="form-check-label">{{text}}</label>
+    <div draggable="true" class="draggable-task card mb-2 shadow-sm" data-id="{{_id}}" data-category="{{category}}">
+        <div class="card-body d-flex justify-content-between align-items-center p-2">
+            <div class="form-check">
+                <input type="checkbox" checked="{{isChecked}}" class="form-check-input me-2 toggle-checked" />
+                <label class="form-check-label">{{text}}</label>
+            </div>
+            <button class="btn btn-sm btn-outline-danger delete" title="Delete">
+                <i class="fas fa-times"></i>
+            </button>
         </div>
-        <button class="btn btn-sm btn-outline-danger delete" title="Delete">
-            <i class="fas fa-times"></i>
-        </button>
-    </li>
+    </div>
 </template>
-
 
 <template name="taskColumns">
     <div class="row g-3 category-row mt-3" id="category-row">
         {{#each categories}}
         <div class="col-md-6 col-lg-3">
-            <div class="card shadow-sm h-100 min-vh-100" data-category="{{this}}">
-                <div class="card-header bg-primary text-white text-center">
-                    {{this}}
+            <div class="shadow h-100 min-vh-100" data-category="{{this}}">
+                <div class="bg-white text-black fw-bold mb-2 rounded p-2 d-flex justify-content-between align-items-center">
+                    <span>{{this}}</span>
+                    <button class="btn btn-sm btn-light text-primary add-task-btn" data-bs-toggle="modal"
+                        data-bs-target="#taskModal" data-category="{{this}}" title="Add Task">
+                        <i class="fas fa-plus"></i>
+                    </button>
                 </div>
-                <ul class="list-group list-group-flush tasks droppable" data-category="{{this}}">
+                <div class="card-body p-2 tasks droppable" data-category="{{this}}">
                     {{#each tasksInCategory this}}
                     {{> task}}
                     {{/each}}
-                </ul>
+                </div>
             </div>
         </div>
         {{/each}}
+    </div>
+</template>
+
+<template name="taskModal">
+    <div class="modal fade w-100" id="taskModal" tabindex="-1" aria-labelledby="taskModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" style="max-width: 700px;">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="taskModalLabel">Add Task</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    {{> form }}
+                </div>
+            </div>
+        </div>
     </div>
 </template>
